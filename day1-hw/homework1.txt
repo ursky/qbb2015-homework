@@ -1,0 +1,6 @@
+fastqc SRR072893.fastq.gz
+hisat -x BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072893.fastq.gz -S BDGP6.sam
+samtools view -b BDGP6.sam > BDGP6.bam
+samtools sort BDGP6.bam > BDGP6sorted.bam
+samtools sort BDGP6sorted.bam > BDGP6indexed.bam
+stringtie BDGP6sorted.bam -G BDGP6.Ensembl.81.gtf -o stringtieoutput -p 4 -e -B
